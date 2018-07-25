@@ -1,15 +1,27 @@
-const endsIn = (str, endChar) => str[str.length - 1] === endChar;
+const last = str => str[str.length - 1];
 
-const inTime = val => {
-  const time = ['days', 'months', 'years', 'day', 'month', 'year'];
-  let valueFrom;
+const endsIn = (str, endChar) => last(str) === endChar;
+
+const idunno = ({ list, resultIn }) => list.reduce(
+  (initial, value) => ({
+    ...initial,
+    [value]: () => {
+      const valueFrom = endsIn(value, 's') ? value : `${value}s`;
+      return { in: resultIn(valueFrom) };
+    },
+  }),
+  {},
+);
+
+const inTime = (val) => {
+  const time = ['days', 'day', 'months', 'month', 'years', 'year'];
 
   const daysInYear = 365;
   const monthsInYear = 12;
 
   const daysInMonth = daysInYear / monthsInYear;
 
-  const resultInTime = {
+  const resultInTime = valueFrom => ({
     days: () => {
       switch (valueFrom) {
         case 'days':
@@ -48,23 +60,16 @@ const inTime = val => {
         default:
           return undefined;
       }
-    }
-  };
+    },
+  });
 
-  return time.reduce((initial, value) => ({
-    ...initial,
-    [value]: () => {
-      valueFrom = endsIn(value, 's') ? value : `${value}s`;
-      return {in: resultInTime};
-    }
-  }), {});
+  return idunno({ list: time, resultIn: resultInTime });
 };
 
-const inWeight = val => {
-  const time = ['kilograms', 'kilogram', 'gram', 'grams'];
-  let valueFrom;
+const inWeight = (val) => {
+  const weights = ['kilograms', 'kilogram', 'gram', 'grams'];
 
-  const resultInWeight = {
+  const resultInWeight = valueFrom => ({
     grams: () => {
       switch (valueFrom) {
         case 'grams':
@@ -86,22 +91,12 @@ const inWeight = val => {
         default:
           return undefined;
       }
-    }
-  };
+    },
+  });
 
-  return time.reduce((initial, value) => ({
-    ...initial,
-    [value]: () => {
-      valueFrom = endsIn(value, 's') ? value : `${value}s`;
-      return {in: resultInWeight};
-    }
-  }), {});
+  return idunno({ list: weights, resultIn: resultInWeight });
 };
 
-
-const whatis = val => {
-  return {...inTime(val), ...inWeight(val)};
-};
-
+const whatis = val => ({ ...inTime(val), ...inWeight(val) });
 
 export default whatis;
