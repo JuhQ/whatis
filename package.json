@@ -4,7 +4,7 @@
   "description": "",
   "main": "whatis.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,17 @@
   },
   "homepage": "https://github.com/JuhQ/whatis#readme",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.0",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.18.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0"
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.4.1",
+    "regenerator-runtime": "^0.12.0"
   }
 }
