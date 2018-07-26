@@ -4,7 +4,8 @@
   "description": "",
   "main": "whatis.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch --silent",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
