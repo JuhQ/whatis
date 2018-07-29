@@ -1,7 +1,14 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": ["jest"],
   "env": {
     "jest/globals": true
+  },
+  "rules": {
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "semi": false,
+      "trailingComma": "all"
+    }]
   }
 }
