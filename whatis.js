@@ -49,6 +49,16 @@ const createResultMethods = ({ list, methods }) => valueFrom =>
     {},
   )
 
+const createMethodPairs = methods => valueFrom => () =>
+  Object.keys(methods).reduce(
+    (initial, key) => ({
+      ...initial,
+      [key]: methods[key],
+      [createMethodNameWithPresentTense(key)]: methods[key],
+    }),
+    {},
+  )[valueFrom]
+
 const inTime = val => {
   const time = [
     'second',
@@ -67,203 +77,113 @@ const inTime = val => {
 
   const daysInMonth = daysInYear / monthsInYear
 
-  const secondsMethod = valueFrom => () =>
-    ({
-      second: val,
-      seconds: val,
-      minute: val * 60,
-      minutes: val * 60,
-      hour: val * 60 * 60,
-      hours: val * 60 * 60,
-      day: val * 60 * 60 * 24,
-      days: val * 60 * 60 * 24,
-      week: val * 60 * 60 * 24 * 7,
-      weeks: val * 60 * 60 * 24 * 7,
-      month: val * 60 * 60 * 24 * daysInMonth,
-      months: val * 60 * 60 * 24 * daysInMonth,
-      year: val * 60 * 60 * 24 * daysInYear,
-      years: val * 60 * 60 * 24 * daysInYear,
-      decade: val * 60 * 60 * 24 * daysInYear * 10,
-      decades: val * 60 * 60 * 24 * daysInYear * 10,
-      century: val * 60 * 60 * 24 * daysInYear * 100,
-      centuries: val * 60 * 60 * 24 * daysInYear * 100,
-    }[valueFrom])
+  const secondsMethod = createMethodPairs({
+    second: val,
+    minute: val * 60,
+    hour: val * 60 * 60,
+    day: val * 60 * 60 * 24,
+    week: val * 60 * 60 * 24 * 7,
+    month: val * 60 * 60 * 24 * daysInMonth,
+    year: val * 60 * 60 * 24 * daysInYear,
+    decade: val * 60 * 60 * 24 * daysInYear * 10,
+    century: val * 60 * 60 * 24 * daysInYear * 100,
+  })
 
-  const minutesMethod = valueFrom => () =>
-    ({
-      second: val / 60,
-      seconds: val / 60,
-      minute: val,
-      minutes: val,
-      hour: val * 60 * 60,
-      hours: val * 60 * 60,
-      day: val * 60 * 60 * 24,
-      days: val * 60 * 60 * 24,
-      week: val * 60 * 60 * 24 * 7,
-      weeks: val * 60 * 60 * 24 * 7,
-      month: val * 60 * 60 * 24 * daysInMonth,
-      months: val * 60 * 60 * 24 * daysInMonth,
-      year: val * 60 * 60 * 24 * daysInYear,
-      years: val * 60 * 60 * 24 * daysInYear,
-      decade: val * 60 * 60 * 24 * daysInYear * 10,
-      decades: val * 60 * 60 * 24 * daysInYear * 10,
-      century: val * 60 * 60 * 24 * daysInYear * 100,
-      centuries: val * 60 * 60 * 24 * daysInYear * 100,
-    }[valueFrom])
+  const minutesMethod = createMethodPairs({
+    second: val / 60,
+    minute: val,
+    hour: val * 60 * 60,
+    day: val * 60 * 60 * 24,
+    week: val * 60 * 60 * 24 * 7,
+    month: val * 60 * 60 * 24 * daysInMonth,
+    year: val * 60 * 60 * 24 * daysInYear,
+    decade: val * 60 * 60 * 24 * daysInYear * 10,
+    century: val * 60 * 60 * 24 * daysInYear * 100,
+  })
 
-  const hoursMethod = valueFrom => () =>
-    ({
-      second: val / 60 / 60,
-      seconds: val / 60 / 60,
-      minute: val / 60,
-      minutes: val / 60,
-      hour: val,
-      hours: val,
-      day: val * 24,
-      days: val * 24,
-      week: val * 24 * 7,
-      weeks: val * 24 * 7,
-      month: val * 24 * daysInMonth,
-      months: val * 24 * daysInMonth,
-      year: val * 24 * daysInYear,
-      years: val * 24 * daysInYear,
-      decade: val * 24 * daysInYear * 10,
-      decades: val * 24 * daysInYear * 10,
-      century: val * 24 * daysInYear * 100,
-      centuries: val * 24 * daysInYear * 100,
-    }[valueFrom])
+  const hoursMethod = createMethodPairs({
+    second: val / 60 / 60,
+    minute: val / 60,
+    hour: val,
+    day: val * 24,
+    week: val * 24 * 7,
+    month: val * 24 * daysInMonth,
+    year: val * 24 * daysInYear,
+    decade: val * 24 * daysInYear * 10,
+    century: val * 24 * daysInYear * 100,
+  })
 
-  const daysMethod = valueFrom => () =>
-    ({
-      second: val / 24 / 60 / 60,
-      seconds: val / 24 / 60 / 60,
-      minute: val / 24 / 60,
-      minutes: val / 24 / 60,
-      hour: val / 24,
-      hours: val / 24,
-      day: val,
-      days: val,
-      week: val * 7,
-      weeks: val * 7,
-      month: val * daysInMonth,
-      months: val * daysInMonth,
-      year: val * daysInYear,
-      years: val * daysInYear,
-      decade: val * daysInYear * 10,
-      decades: val * daysInYear * 10,
-      century: val * daysInYear * 100,
-      centuries: val * daysInYear * 100,
-    }[valueFrom])
+  const daysMethod = createMethodPairs({
+    second: val / 24 / 60 / 60,
+    minute: val / 24 / 60,
+    hour: val / 24,
+    day: val,
+    week: val * 7,
+    month: val * daysInMonth,
+    year: val * daysInYear,
+    decade: val * daysInYear * 10,
+    century: val * daysInYear * 100,
+  })
 
-  const weeksMethod = valueFrom => () =>
-    ({
-      second: val / 7 / 24 / 60 / 60,
-      seconds: val / 7 / 24 / 60 / 60,
-      minute: val / 7 / 24 / 60,
-      minutes: val / 7 / 24 / 60,
-      hour: val / 7 / 24,
-      hours: val / 7 / 24,
-      day: val / 7,
-      days: val / 7,
-      week: val,
-      weeks: val,
-      month: val * daysInMonth,
-      months: val * daysInMonth,
-      year: val * daysInYear,
-      years: val * daysInYear,
-      decade: val * daysInYear * 10,
-      decades: val * daysInYear * 10,
-      century: val * daysInYear * 100,
-      centuries: val * daysInYear * 100,
-    }[valueFrom])
+  const weeksMethod = createMethodPairs({
+    second: val / 7 / 24 / 60 / 60,
+    minute: val / 7 / 24 / 60,
+    hour: val / 7 / 24,
+    day: val / 7,
+    week: val,
+    month: val * daysInMonth,
+    year: val * daysInYear,
+    decade: val * daysInYear * 10,
+    century: val * daysInYear * 100,
+  })
 
-  const monthsMethod = valueFrom => () =>
-    ({
-      second: val / daysInMonth / 24 / 3600,
-      seconds: val / daysInMonth / 24 / 3600,
-      minute: val / daysInMonth / 24 / 60,
-      minutes: val / daysInMonth / 24 / 60,
-      hour: val / daysInMonth / 24,
-      hours: val / daysInMonth / 24,
-      day: val / daysInMonth,
-      days: val / daysInMonth,
-      week: val / 7,
-      weeks: val / 7,
-      month: val,
-      months: val,
-      year: val * monthsInYear,
-      years: val * monthsInYear,
-      decade: val * monthsInYear * 10,
-      decades: val * monthsInYear * 10,
-      century: val * monthsInYear * 100,
-      centuries: val * monthsInYear * 100,
-    }[valueFrom])
+  const monthsMethod = createMethodPairs({
+    second: val / daysInMonth / 24 / 3600,
+    minute: val / daysInMonth / 24 / 60,
+    hour: val / daysInMonth / 24,
+    day: val / daysInMonth,
+    week: val / 7,
+    month: val,
+    year: val * monthsInYear,
+    decade: val * monthsInYear * 10,
+    century: val * monthsInYear * 100,
+  })
 
-  const yearsMethod = valueFrom => () =>
-    ({
-      second: val / daysInYear / 24 / 60 / 60,
-      seconds: val / daysInYear / 24 / 60 / 60,
-      minute: val / daysInYear / 24 / 60,
-      minutes: val / daysInYear / 24 / 60,
-      hour: val / daysInYear / 24,
-      hours: val / daysInYear / 24,
-      day: val / daysInYear,
-      days: val / daysInYear,
-      week: val / 52,
-      weeks: val / 52,
-      month: val / monthsInYear,
-      months: val / monthsInYear,
-      year: val,
-      years: val,
-      decade: val * 10,
-      decades: val * 10,
-      century: val * 100,
-      centuries: val * 100,
-    }[valueFrom])
+  const yearsMethod = createMethodPairs({
+    second: val / daysInYear / 24 / 60 / 60,
+    minute: val / daysInYear / 24 / 60,
+    hour: val / daysInYear / 24,
+    day: val / daysInYear,
+    week: val / 52,
+    month: val / monthsInYear,
+    year: val,
+    decade: val * 10,
+    century: val * 100,
+  })
 
-  const decadesMethod = valueFrom => () =>
-    ({
-      second: val / daysInYear / 24 / 60 / 60 / 10,
-      seconds: val / daysInYear / 24 / 60 / 60 / 10,
-      minute: val / daysInYear / 24 / 60 / 10,
-      minutes: val / daysInYear / 24 / 60 / 10,
-      hour: val / daysInYear / 24 / 10,
-      hours: val / daysInYear / 24 / 10,
-      day: val / daysInYear / 10,
-      days: val / daysInYear / 10,
-      week: val / 52 / 10,
-      weeks: val / 52 / 10,
-      month: val / monthsInYear / 10,
-      months: val / monthsInYear / 10,
-      year: val / 10,
-      years: val / 10,
-      decade: val,
-      decades: val,
-      century: val * 10,
-      centuries: val * 10,
-    }[valueFrom])
+  const decadesMethod = createMethodPairs({
+    second: val / daysInYear / 24 / 60 / 60 / 10,
+    minute: val / daysInYear / 24 / 60 / 10,
+    hour: val / daysInYear / 24 / 10,
+    day: val / daysInYear / 10,
+    week: val / 52 / 10,
+    month: val / monthsInYear / 10,
+    year: val / 10,
+    decade: val,
+    century: val * 10,
+  })
 
-  const centuriesMethod = valueFrom => () =>
-    ({
-      second: val / daysInYear / 24 / 60 / 60 / 100,
-      seconds: val / daysInYear / 24 / 60 / 60 / 100,
-      minute: val / daysInYear / 24 / 60 / 100,
-      minutes: val / daysInYear / 24 / 60 / 100,
-      hour: val / daysInYear / 24 / 100,
-      hours: val / daysInYear / 24 / 100,
-      day: val / daysInYear / 100,
-      days: val / daysInYear / 100,
-      week: val / 52 / 100,
-      weeks: val / 52 / 100,
-      month: val / monthsInYear / 100,
-      months: val / monthsInYear / 100,
-      year: val / 100,
-      years: val / 100,
-      decade: val / 10,
-      decades: val / 10,
-      century: val,
-      centuries: val,
-    }[valueFrom])
+  const centuriesMethod = createMethodPairs({
+    second: val / daysInYear / 24 / 60 / 60 / 100,
+    minute: val / daysInYear / 24 / 60 / 100,
+    hour: val / daysInYear / 24 / 100,
+    day: val / daysInYear / 100,
+    week: val / 52 / 100,
+    month: val / monthsInYear / 100,
+    year: val / 100,
+    decade: val / 10,
+    century: val,
+  })
 
   const timeMethods = {
     second: secondsMethod,
@@ -288,21 +208,15 @@ const inTime = val => {
 const inWeight = val => {
   const weights = ['gram', 'kilogram']
 
-  const gramsMethod = valueFrom => () =>
-    ({
-      gram: val,
-      grams: val,
-      kilogram: val * 1000,
-      kilograms: val * 1000,
-    }[valueFrom])
+  const gramsMethod = createMethodPairs({
+    gram: val,
+    kilogram: val * 1000,
+  })
 
-  const kilogramsMethod = valueFrom => () =>
-    ({
-      gram: val / 1000,
-      grams: val / 1000,
-      kilogram: val,
-      kilograms: val,
-    }[valueFrom])
+  const kilogramsMethod = createMethodPairs({
+    gram: val / 1000,
+    kilogram: val,
+  })
 
   const weightMethods = {
     gram: gramsMethod,
@@ -350,53 +264,33 @@ const inLength = val => {
   // 10**21 Zm zettametre
   // 10**24 Ym yottametre
 
-  const yoctometreMethod = valueFrom => () =>
-    ({
-      yoctometre: val,
-      yoctometres: val,
-      zeptometre: val * 10 ** 3,
-      zeptometres: val * 10 ** 3,
-      attometre: val * 10 ** 6,
-      attometres: val * 10 ** 6,
-      femtometre: val * 10 ** 9,
-      femtometres: val * 10 ** 9,
-    }[valueFrom])
+  const yoctometreMethod = createMethodPairs({
+    yoctometre: val,
+    zeptometre: val * 10 ** 3,
+    attometre: val * 10 ** 6,
+    femtometre: val * 10 ** 9,
+  })
 
-  const zeptometreMethod = valueFrom => () =>
-    ({
-      yoctometre: val / 10 ** 3,
-      yoctometres: val / 10 ** 3,
-      zeptometre: val,
-      zeptometres: val,
-      attometre: val * 10 ** 3,
-      attometres: val * 10 ** 3,
-      femtometre: val * 10 ** 6,
-      femtometres: val * 10 ** 6,
-    }[valueFrom])
+  const zeptometreMethod = createMethodPairs({
+    yoctometre: val / 10 ** 3,
+    zeptometre: val,
+    attometre: val * 10 ** 3,
+    femtometre: val * 10 ** 6,
+  })
 
-  const attometreMethod = valueFrom => () =>
-    ({
-      yoctometre: val / 10 ** 6,
-      yoctometres: val / 10 ** 6,
-      zeptometre: val / 10 ** 3,
-      zeptometres: val / 10 ** 3,
-      attometre: val,
-      attometres: val,
-      femtometre: val * 10 ** 3,
-      femtometres: val * 10 ** 3,
-    }[valueFrom])
+  const attometreMethod = createMethodPairs({
+    yoctometre: val / 10 ** 6,
+    zeptometre: val / 10 ** 3,
+    attometre: val,
+    femtometre: val * 10 ** 3,
+  })
 
-  const femtometreMethod = valueFrom => () =>
-    ({
-      yoctometre: val / 10 ** 9,
-      yoctometres: val / 10 ** 9,
-      zeptometre: val / 10 ** 6,
-      zeptometres: val / 10 ** 6,
-      attometre: val / 10 ** 3,
-      attometres: val / 10 ** 3,
-      femtometre: val,
-      femtometres: val,
-    }[valueFrom])
+  const femtometreMethod = createMethodPairs({
+    yoctometre: val / 10 ** 9,
+    zeptometre: val / 10 ** 6,
+    attometre: val / 10 ** 3,
+    femtometre: val,
+  })
 
   const lengthMethods = {
     yoctometre: yoctometreMethod,
