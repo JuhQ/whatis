@@ -252,6 +252,8 @@ describe('Whatis', () => {
       'decimetres',
       'metre',
       'metres',
+      'decametre',
+      'decametres',
     ]
 
     shouldHaveMethods(methods)
@@ -270,6 +272,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1.0000000000000001e-24 },
           { val: 1, to: 'decimetre', result: 1e-27 },
           { val: 1, to: 'metre', result: 9.999999999999999e-31 },
+          { val: 1, to: 'decametre', result: 1e-33 },
         ],
         zeptometre: [
           { val: 1, to: 'yoctometres', result: 1000 },
@@ -283,6 +286,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1e-21 },
           { val: 1, to: 'decimetre', result: 1.0000000000000001e-24 },
           { val: 1, to: 'metre', result: 1e-27 },
+          { val: 1, to: 'decametre', result: 9.999999999999999e-31 },
         ],
         attometres: [
           { val: 1, to: 'yoctometres', result: 1e6 },
@@ -296,6 +300,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1e-18 },
           { val: 1, to: 'decimetre', result: 1e-21 },
           { val: 1, to: 'metre', result: 1.0000000000000001e-24 },
+          { val: 1, to: 'decametre', result: 1e-27 },
         ],
         femtometres: [
           { val: 1, to: 'yoctometres', result: 1e9 },
@@ -309,6 +314,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1e-15 },
           { val: 1, to: 'decimetre', result: 1e-18 },
           { val: 1, to: 'metre', result: 1e-21 },
+          { val: 1, to: 'decametre', result: 1.0000000000000001e-24 },
         ],
         picometres: [
           { val: 1, to: 'yoctometres', result: 1e12 },
@@ -322,6 +328,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1e-12 },
           { val: 1, to: 'decimetre', result: 1e-15 },
           { val: 1, to: 'metre', result: 1e-18 },
+          { val: 1, to: 'decametre', result: 1e-21 },
         ],
         nanometres: [
           { val: 1, to: 'yoctometres', result: 1e15 },
@@ -335,6 +342,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1e-9 },
           { val: 1, to: 'decimetre', result: 1e-12 },
           { val: 1, to: 'metre', result: 1e-15 },
+          { val: 1, to: 'decametre', result: 1e-18 },
         ],
         micrometres: [
           { val: 1, to: 'yoctometres', result: 1e18 },
@@ -348,6 +356,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 0.000001 },
           { val: 1, to: 'decimetre', result: 0.000000001 },
           { val: 1, to: 'metre', result: 0.000000000001 },
+          { val: 1, to: 'decametre', result: 0.000000000000001 },
         ],
         millimetre: [
           { val: 1, to: 'yoctometres', result: 1e21 },
@@ -361,6 +370,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 0.001 },
           { val: 1, to: 'decimetre', result: 0.000001 },
           { val: 1, to: 'metre', result: 0.000000001 },
+          { val: 1, to: 'decametre', result: 0.000000000001 },
         ],
         centimetre: [
           { val: 1, to: 'yoctometres', result: 1e24 },
@@ -374,6 +384,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1 },
           { val: 1, to: 'decimetre', result: 0.001 },
           { val: 1, to: 'metre', result: 0.000001 },
+          { val: 1, to: 'decametre', result: 0.000000001 },
         ],
         decimetre: [
           { val: 1, to: 'yoctometres', result: 1e27 },
@@ -387,6 +398,7 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1000 },
           { val: 1, to: 'decimetre', result: 1 },
           { val: 1, to: 'metre', result: 0.001 },
+          { val: 1, to: 'decametre', result: 0.000001 },
         ],
         metre: [
           { val: 1, to: 'yoctometres', result: 1e30 },
@@ -400,6 +412,21 @@ describe('Whatis', () => {
           { val: 1, to: 'centimetres', result: 1e6 },
           { val: 1, to: 'decimetre', result: 1000 },
           { val: 1, to: 'metre', result: 1 },
+          { val: 1, to: 'decametre', result: 0.001 },
+        ],
+        decametre: [
+          { val: 1, to: 'yoctometres', result: 1e33 },
+          { val: 1, to: 'zeptometre', result: 1e30 },
+          { val: 1, to: 'attometres', result: 1e27 },
+          { val: 1, to: 'femtometres', result: 1e24 },
+          { val: 1, to: 'picometres', result: 1e21 },
+          { val: 1, to: 'nanometres', result: 1e18 },
+          { val: 1, to: 'micrometres', result: 1e15 },
+          { val: 1, to: 'millimetres', result: 1e12 },
+          { val: 1, to: 'centimetres', result: 1e9 },
+          { val: 1, to: 'decimetre', result: 1e6 },
+          { val: 1, to: 'metre', result: 1000 },
+          { val: 1, to: 'decametre', result: 1 },
         ],
       },
     ]

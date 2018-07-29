@@ -244,6 +244,7 @@ const inLength = val => {
     'centimetre',
     'decimetre',
     'metre',
+    'decametre',
   ]
 
   // 10**−24 ym yoctometre
@@ -280,6 +281,7 @@ const inLength = val => {
     centimetre: val * 1e24,
     decimetre: val * 1e27,
     metre: val * 1e30,
+    decametre: val * 1e33,
   })
 
   const zeptometreMethod = createMethodPairs({
@@ -294,6 +296,7 @@ const inLength = val => {
     centimetre: val * 1e21,
     decimetre: val * 1e24,
     metre: val * 1e27,
+    decametre: val * 1e30,
   })
 
   const attometreMethod = createMethodPairs({
@@ -308,6 +311,7 @@ const inLength = val => {
     centimetre: val * 1e18,
     decimetre: val * 1e21,
     metre: val * 1e24,
+    decametre: val * 1e27,
   })
 
   const femtometreMethod = createMethodPairs({
@@ -322,6 +326,7 @@ const inLength = val => {
     centimetre: val * 1e15,
     decimetre: val * 1e18,
     metre: val * 1e21,
+    decametre: val * 1e24,
   })
 
   const picometreMethod = createMethodPairs({
@@ -336,6 +341,7 @@ const inLength = val => {
     centimetre: val * 1e12,
     decimetre: val * 1e15,
     metre: val * 1e18,
+    decametre: val * 1e21,
   })
 
   const nanometreMethod = createMethodPairs({
@@ -350,6 +356,7 @@ const inLength = val => {
     centimetre: val * 1e9,
     decimetre: val * 1e12,
     metre: val * 1e15,
+    decametre: val * 1e18,
   })
 
   const micrometreMethod = createMethodPairs({
@@ -364,6 +371,7 @@ const inLength = val => {
     centimetre: val * 1e6,
     decimetre: val * 1e9,
     metre: val * 1e12,
+    decametre: val * 1e15,
   })
 
   const millimetreMethod = createMethodPairs({
@@ -378,6 +386,7 @@ const inLength = val => {
     centimetre: val * 1e3,
     decimetre: val * 1e6,
     metre: val * 1e9,
+    decametre: val * 1e12,
   })
 
   const centimetreMethod = createMethodPairs({
@@ -392,6 +401,7 @@ const inLength = val => {
     centimetre: val,
     decimetre: val * 1e3,
     metre: val * 1e6,
+    decametre: val * 1e9,
   })
 
   const decimetreMethod = createMethodPairs({
@@ -406,6 +416,7 @@ const inLength = val => {
     centimetre: val / 1e3,
     decimetre: val,
     metre: val * 1e3,
+    decametre: val * 1e6,
   })
 
   const metreMethod = createMethodPairs({
@@ -420,6 +431,22 @@ const inLength = val => {
     centimetre: val / 1e6,
     decimetre: val / 1e3,
     metre: val,
+    decametre: val * 1e3,
+  })
+
+  const decametreMethod = createMethodPairs({
+    yoctometre: val / 1e33,
+    zeptometre: val / 1e30,
+    attometre: val / 1e27,
+    femtometre: val / 1e24,
+    picometre: val / 1e21,
+    nanometre: val / 1e18,
+    micrometre: val / 1e15,
+    millimetre: val / 1e12,
+    centimetre: val / 1e9,
+    decimetre: val / 1e6,
+    metre: val / 1e3,
+    decametre: val,
   })
 
   const lengthMethods = {
@@ -434,6 +461,7 @@ const inLength = val => {
     centimetre: centimetreMethod,
     decimetre: decimetreMethod,
     metre: metreMethod,
+    decametre: decametreMethod,
   }
 
   const resultsInLength = createResultMethods({
