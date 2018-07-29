@@ -43,6 +43,8 @@ describe('Whatis', () => {
         'decades',
         'century',
         'centuries',
+        'millennium',
+        'millenniums',
       ]
 
       shouldHaveMethods(methods)
@@ -96,6 +98,22 @@ describe('Whatis', () => {
             .in.decades(),
         ).toBe(0.0027397260273972603)
       })
+
+      it('should give correct centuries for 864000 seconds', () => {
+        expect(
+          whatis(864000)
+            .seconds()
+            .in.centuries(),
+        ).toBe(0.000273972602739726)
+      })
+
+      it('should give correct millenniums for 864000 seconds', () => {
+        expect(
+          whatis(864000)
+            .seconds()
+            .in.millenniums(),
+        ).toBe(0.0000273972602739726)
+      })
     })
 
     describe('hours', () => {
@@ -145,6 +163,22 @@ describe('Whatis', () => {
             .hours()
             .in.decades(),
         ).toBe(0.01141552511415525)
+      })
+
+      it('should give correct centuries for 1000 hour', () => {
+        expect(
+          whatis(1000)
+            .hours()
+            .in.centuries(),
+        ).toBe(0.001141552511415525)
+      })
+
+      it('should give correct millenniums for 1000 hour', () => {
+        expect(
+          whatis(1000)
+            .hours()
+            .in.millenniums(),
+        ).toBe(0.00011415525114155251)
       })
     })
 
@@ -196,6 +230,22 @@ describe('Whatis', () => {
             .in.decades(),
         ).toBe(0.1)
       })
+
+      it('should give correct centuries for 365 days', () => {
+        expect(
+          whatis(365)
+            .days()
+            .in.centuries(),
+        ).toBe(0.01)
+      })
+
+      it('should give correct millenniums for 365 days', () => {
+        expect(
+          whatis(365)
+            .days()
+            .in.millenniums(),
+        ).toBe(0.001)
+      })
     })
 
     describe('months', () => {
@@ -245,6 +295,22 @@ describe('Whatis', () => {
             .months()
             .in.decades(),
         ).toBe(0.1)
+      })
+
+      it('should give correct centuries for 12 months', () => {
+        expect(
+          whatis(12)
+            .months()
+            .in.centuries(),
+        ).toBe(0.01)
+      })
+
+      it('should give correct millenniums for 12 months', () => {
+        expect(
+          whatis(12)
+            .months()
+            .in.millenniums(),
+        ).toBe(0.001)
       })
     })
 
@@ -296,6 +362,22 @@ describe('Whatis', () => {
             .in.decades(),
         ).toBe(0.1)
       })
+
+      it('should give correct centuries for 1 year', () => {
+        expect(
+          whatis(1)
+            .years()
+            .in.centuries(),
+        ).toBe(0.01)
+      })
+
+      it('should give correct millenniums for 1 year', () => {
+        expect(
+          whatis(1)
+            .years()
+            .in.millenniums(),
+        ).toBe(0.001)
+      })
     })
 
     describe('decades', () => {
@@ -346,10 +428,26 @@ describe('Whatis', () => {
             .in.decades(),
         ).toBe(1)
       })
+
+      it('should give correct centuries for 1 decade', () => {
+        expect(
+          whatis(1)
+            .decades()
+            .in.centuries(),
+        ).toBe(0.1)
+      })
+
+      it('should give correct millenniums for 1 decade', () => {
+        expect(
+          whatis(1)
+            .decades()
+            .in.millenniums(),
+        ).toBe(0.01)
+      })
     })
 
     describe('centuries', () => {
-      it('should give correct seconds for 1 decade', () => {
+      it('should give correct seconds for 1 century', () => {
         expect(
           whatis(1)
             .centuries()
@@ -357,7 +455,7 @@ describe('Whatis', () => {
         ).toBe(3153600000)
       })
 
-      it('should give correct hours for 1 decade', () => {
+      it('should give correct hours for 1 century', () => {
         expect(
           whatis(1)
             .centuries()
@@ -365,7 +463,7 @@ describe('Whatis', () => {
         ).toBe(876000)
       })
 
-      it('should give correct days for 1 decade', () => {
+      it('should give correct days for 1 century', () => {
         expect(
           whatis(1)
             .centuries()
@@ -373,7 +471,7 @@ describe('Whatis', () => {
         ).toBe(36500)
       })
 
-      it('should give correct months for 1 decade', () => {
+      it('should give correct months for 1 century', () => {
         expect(
           whatis(1)
             .centuries()
@@ -381,7 +479,7 @@ describe('Whatis', () => {
         ).toBe(1200)
       })
 
-      it('should give correct year for 1 decade', () => {
+      it('should give correct year for 1 century', () => {
         expect(
           whatis(1)
             .centuries()
@@ -389,7 +487,7 @@ describe('Whatis', () => {
         ).toBe(100)
       })
 
-      it('should give correct centuries for 1 decade', () => {
+      it('should give correct centuries for 1 century', () => {
         expect(
           whatis(1)
             .centuries()
@@ -402,6 +500,80 @@ describe('Whatis', () => {
           whatis(1)
             .centuries()
             .in.centuries(),
+        ).toBe(1)
+      })
+
+      it('should give correct centuries for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.millenniums(),
+        ).toBe(0.1)
+      })
+    })
+
+    describe('millenniums', () => {
+      it('should give correct seconds for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.seconds(),
+        ).toBe(31536000000)
+      })
+
+      it('should give correct hours for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.hours(),
+        ).toBe(8760000)
+      })
+
+      it('should give correct days for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.days(),
+        ).toBe(365000)
+      })
+
+      it('should give correct months for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.months(),
+        ).toBe(12000)
+      })
+
+      it('should give correct year for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.years(),
+        ).toBe(1000)
+      })
+
+      it('should give correct millenniums for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.decades(),
+        ).toBe(100)
+      })
+
+      it('should give correct millenniums for 1 century', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.centuries(),
+        ).toBe(10)
+      })
+
+      it('should give correct millenniums for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.millenniums(),
         ).toBe(1)
       })
     })

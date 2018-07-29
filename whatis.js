@@ -70,6 +70,7 @@ const inTime = val => {
     'year',
     'decade',
     'century',
+    'millennium',
   ]
 
   const daysInYear = 365
@@ -87,6 +88,7 @@ const inTime = val => {
     year: val * 60 * 60 * 24 * daysInYear,
     decade: val * 60 * 60 * 24 * daysInYear * 10,
     century: val * 60 * 60 * 24 * daysInYear * 100,
+    millennium: val * 60 * 60 * 24 * daysInYear * 1000,
   })
 
   const minutesMethod = createMethodPairs({
@@ -99,6 +101,7 @@ const inTime = val => {
     year: val * 60 * 60 * 24 * daysInYear,
     decade: val * 60 * 60 * 24 * daysInYear * 10,
     century: val * 60 * 60 * 24 * daysInYear * 100,
+    millennium: val * 60 * 60 * 24 * daysInYear * 1000,
   })
 
   const hoursMethod = createMethodPairs({
@@ -111,6 +114,7 @@ const inTime = val => {
     year: val * 24 * daysInYear,
     decade: val * 24 * daysInYear * 10,
     century: val * 24 * daysInYear * 100,
+    millennium: val * 24 * daysInYear * 1000,
   })
 
   const daysMethod = createMethodPairs({
@@ -123,6 +127,7 @@ const inTime = val => {
     year: val * daysInYear,
     decade: val * daysInYear * 10,
     century: val * daysInYear * 100,
+    millennium: val * daysInYear * 1000,
   })
 
   const weeksMethod = createMethodPairs({
@@ -135,6 +140,7 @@ const inTime = val => {
     year: val * daysInYear,
     decade: val * daysInYear * 10,
     century: val * daysInYear * 100,
+    millennium: val * daysInYear * 1000,
   })
 
   const monthsMethod = createMethodPairs({
@@ -147,6 +153,7 @@ const inTime = val => {
     year: val * monthsInYear,
     decade: val * monthsInYear * 10,
     century: val * monthsInYear * 100,
+    millennium: val * monthsInYear * 1000,
   })
 
   const yearsMethod = createMethodPairs({
@@ -159,6 +166,7 @@ const inTime = val => {
     year: val,
     decade: val * 10,
     century: val * 100,
+    millennium: val * 1000,
   })
 
   const decadesMethod = createMethodPairs({
@@ -171,6 +179,7 @@ const inTime = val => {
     year: val / 10,
     decade: val,
     century: val * 10,
+    millennium: val * 100,
   })
 
   const centuriesMethod = createMethodPairs({
@@ -183,6 +192,20 @@ const inTime = val => {
     year: val / 100,
     decade: val / 10,
     century: val,
+    millennium: val * 10,
+  })
+
+  const millenniumsMethod = createMethodPairs({
+    second: val / daysInYear / 24 / 60 / 60 / 1000,
+    minute: val / daysInYear / 24 / 60 / 1000,
+    hour: val / daysInYear / 24 / 1000,
+    day: val / daysInYear / 1000,
+    week: val / 52 / 1000,
+    month: val / monthsInYear / 1000,
+    year: val / 1000,
+    decade: val / 100,
+    century: val / 10,
+    millennium: val,
   })
 
   const timeMethods = {
@@ -195,6 +218,7 @@ const inTime = val => {
     year: yearsMethod,
     decade: decadesMethod,
     century: centuriesMethod,
+    millennium: millenniumsMethod,
   }
 
   const resultsInTime = createResultMethods({
