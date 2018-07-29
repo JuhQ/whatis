@@ -266,7 +266,9 @@ const inLength = val => {
     'femtometre',
     'picometre',
     'nanometre',
+    'micrometre',
   ]
+
   // 10**−24 ym yoctometre
   // 10**−21 zm zeptometre
   // 10**−18 am attometre
@@ -296,6 +298,7 @@ const inLength = val => {
     femtometre: val * 10 ** 9,
     picometre: val * 10 ** 12,
     nanometre: val * 10 ** 15,
+    micrometre: val * 10 ** 18,
   })
 
   const zeptometreMethod = createMethodPairs({
@@ -305,6 +308,7 @@ const inLength = val => {
     femtometre: val * 10 ** 6,
     picometre: val * 10 ** 9,
     nanometre: val * 10 ** 12,
+    micrometre: val * 10 ** 15,
   })
 
   const attometreMethod = createMethodPairs({
@@ -314,6 +318,7 @@ const inLength = val => {
     femtometre: val * 10 ** 3,
     picometre: val * 10 ** 6,
     nanometre: val * 10 ** 9,
+    micrometre: val * 10 ** 12,
   })
 
   const femtometreMethod = createMethodPairs({
@@ -323,6 +328,7 @@ const inLength = val => {
     femtometre: val,
     picometre: val * 10 ** 3,
     nanometre: val * 10 ** 6,
+    micrometre: val * 10 ** 9,
   })
 
   const picometreMethod = createMethodPairs({
@@ -332,6 +338,7 @@ const inLength = val => {
     femtometre: val / 10 ** 3,
     picometre: val,
     nanometre: val * 10 ** 3,
+    micrometre: val * 10 ** 6,
   })
 
   const nanometreMethod = createMethodPairs({
@@ -341,6 +348,17 @@ const inLength = val => {
     femtometre: val / 10 ** 6,
     picometre: val / 10 ** 3,
     nanometre: val,
+    micrometre: val * 10 ** 3,
+  })
+
+  const micrometreMethod = createMethodPairs({
+    yoctometre: val / 10 ** 18,
+    zeptometre: val / 10 ** 15,
+    attometre: val / 10 ** 12,
+    femtometre: val / 10 ** 9,
+    picometre: val / 10 ** 6,
+    nanometre: val / 10 ** 3,
+    micrometre: val,
   })
 
   const lengthMethods = {
@@ -350,6 +368,7 @@ const inLength = val => {
     femtometre: femtometreMethod,
     picometre: picometreMethod,
     nanometre: nanometreMethod,
+    micrometre: micrometreMethod,
   }
 
   const resultsInLength = createResultMethods({

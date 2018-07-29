@@ -638,6 +638,8 @@ describe('Whatis', () => {
         'picometres',
         'nanometre',
         'nanometres',
+        'micrometre',
+        'micrometres',
       ]
 
       shouldHaveMethods(methods)
@@ -684,12 +686,20 @@ describe('Whatis', () => {
         ).toBe(1e-12)
       })
 
-      it('should give correct attometres for 1 yoctometre', () => {
+      it('should give correct nanometres for 1 yoctometre', () => {
         expect(
           whatis(1)
             .yoctometre()
             .in.nanometres(),
         ).toBe(1e-15)
+      })
+
+      it('should give correct micrometres for 1 yoctometre', () => {
+        expect(
+          whatis(1)
+            .yoctometres()
+            .in.micrometres(),
+        ).toBe(1e-18)
       })
     })
 
@@ -734,12 +744,20 @@ describe('Whatis', () => {
         ).toBe(1e-9)
       })
 
-      it('should give correct attometres for 1 zeptometre', () => {
+      it('should give correct nanometres for 1 zeptometre', () => {
         expect(
           whatis(1)
             .zeptometre()
             .in.nanometres(),
         ).toBe(1e-12)
+      })
+
+      it('should give correct micrometres for 1 zeptometre', () => {
+        expect(
+          whatis(1)
+            .zeptometres()
+            .in.micrometres(),
+        ).toBe(1e-15)
       })
     })
 
@@ -784,12 +802,20 @@ describe('Whatis', () => {
         ).toBe(0.000001)
       })
 
-      it('should give correct attometres for 1 nanometre', () => {
+      it('should give correct nanometres for 1 attometre', () => {
         expect(
           whatis(1)
             .attometre()
             .in.nanometres(),
         ).toBe(1e-9)
+      })
+
+      it('should give correct micrometres for 1 attometre', () => {
+        expect(
+          whatis(1)
+            .attometres()
+            .in.micrometres(),
+        ).toBe(1e-12)
       })
     })
 
@@ -841,6 +867,14 @@ describe('Whatis', () => {
             .in.nanometres(),
         ).toBe(0.000001)
       })
+
+      it('should give correct micrometres for 1 femtometre', () => {
+        expect(
+          whatis(1)
+            .femtometres()
+            .in.micrometres(),
+        ).toBe(0.000000001)
+      })
     })
 
     describe('picometres', () => {
@@ -891,6 +925,14 @@ describe('Whatis', () => {
             .in.nanometres(),
         ).toBe(0.001)
       })
+
+      it('should give correct micrometres for 1 picometre', () => {
+        expect(
+          whatis(1)
+            .picometres()
+            .in.micrometres(),
+        ).toBe(0.000001)
+      })
     })
 
     describe('nanometres', () => {
@@ -939,6 +981,72 @@ describe('Whatis', () => {
           whatis(1)
             .nanometres()
             .in.nanometres(),
+        ).toBe(1)
+      })
+
+      it('should give correct micrometres for 1 nanometre', () => {
+        expect(
+          whatis(1)
+            .nanometres()
+            .in.micrometres(),
+        ).toBe(0.001)
+      })
+    })
+
+    describe('micrometres', () => {
+      it('should give correct yoctometres for 1 micrometre', () => {
+        expect(
+          whatis(1)
+            .micrometres()
+            .in.yoctometres(),
+        ).toBe(1000000000000000000)
+      })
+
+      it('should give correct zeptometres for 1 micrometres', () => {
+        expect(
+          whatis(1)
+            .micrometres()
+            .in.zeptometres(),
+        ).toBe(1000000000000000)
+      })
+
+      it('should give correct attometres for 1 micrometre', () => {
+        expect(
+          whatis(1)
+            .micrometres()
+            .in.attometres(),
+        ).toBe(1000000000000)
+      })
+
+      it('should give correct femtometres for 1 micrometre', () => {
+        expect(
+          whatis(1)
+            .micrometres()
+            .in.femtometres(),
+        ).toBe(1000000000)
+      })
+
+      it('should give correct picometres for 1 micrometre', () => {
+        expect(
+          whatis(1)
+            .micrometres()
+            .in.picometres(),
+        ).toBe(1000000)
+      })
+
+      it('should give correct micrometres for 1 micrometre', () => {
+        expect(
+          whatis(1)
+            .micrometres()
+            .in.nanometres(),
+        ).toBe(1000)
+      })
+
+      it('should give correct micrometres for 1 micrometre', () => {
+        expect(
+          whatis(1)
+            .micrometres()
+            .in.micrometres(),
         ).toBe(1)
       })
     })
