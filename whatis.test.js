@@ -450,4 +450,159 @@ describe('Whatis', () => {
       })
     })
   })
+
+  describe('length units', () => {
+    describe('methods', () => {
+      const methods = [
+        'yoctometre',
+        'yoctometres',
+        'zeptometre',
+        'zeptometres',
+        'attometre',
+        'attometres',
+        'femtometre',
+        'femtometres',
+        // 'picometre',
+        // 'picometres',
+      ]
+
+      shouldHaveMethods(methods)
+    })
+
+    describe('yoctometres', () => {
+      it('should give correct yoctometres for 1 yoctometre', () => {
+        expect(
+          whatis(1)
+            .yoctometres()
+            .in.yoctometres(),
+        ).toBe(1)
+      })
+
+      it('should give correct zeptometre for 1000 yoctometres', () => {
+        expect(
+          whatis(1000)
+            .yoctometres()
+            .in.zeptometre(),
+        ).toBe(1)
+      })
+
+      it('should give correct attometres for 1 yoctometre', () => {
+        expect(
+          whatis(1)
+            .yoctometres()
+            .in.attometres(),
+        ).toBe(0.000001)
+      })
+
+      it('should give correct femtometres for 1 yoctometre', () => {
+        expect(
+          whatis(1)
+            .yoctometres()
+            .in.femtometres(),
+        ).toBe(1e-9)
+      })
+    })
+
+    describe('zeptometres', () => {
+      it('should give correct yoctometres for 1 zeptometre', () => {
+        expect(
+          whatis(1)
+            .zeptometres()
+            .in.yoctometres(),
+        ).toBe(1000)
+      })
+
+      it('should give correct zeptometres for 1 zeptometre', () => {
+        expect(
+          whatis(1)
+            .zeptometres()
+            .in.zeptometres(),
+        ).toBe(1)
+      })
+
+      it('should give correct attometres for 1 zeptometre', () => {
+        expect(
+          whatis(1)
+            .zeptometres()
+            .in.attometres(),
+        ).toBe(0.001)
+      })
+
+      it('should give correct femtometres for 1 zeptometre', () => {
+        expect(
+          whatis(1)
+            .zeptometres()
+            .in.femtometres(),
+        ).toBe(1e-6)
+      })
+    })
+
+    describe('attometres', () => {
+      it('should give correct yoctometres for 1 attometre', () => {
+        expect(
+          whatis(1)
+            .attometres()
+            .in.yoctometres(),
+        ).toBe(1000000)
+      })
+
+      it('should give correct zeptometres for 1 attometres', () => {
+        expect(
+          whatis(1)
+            .attometres()
+            .in.zeptometres(),
+        ).toBe(1000)
+      })
+
+      it('should give correct attometres for 1 attometre', () => {
+        expect(
+          whatis(1)
+            .attometres()
+            .in.attometres(),
+        ).toBe(1)
+      })
+
+      it('should give correct femtometres for 1 attometres', () => {
+        expect(
+          whatis(1)
+            .attometres()
+            .in.femtometres(),
+        ).toBe(0.001)
+      })
+    })
+
+    describe('femtometres', () => {
+      it('should give correct yoctometres for 1 femtometre', () => {
+        expect(
+          whatis(1)
+            .femtometres()
+            .in.yoctometres(),
+        ).toBe(1000000000)
+      })
+
+      it('should give correct zeptometres for 1 femtometres', () => {
+        expect(
+          whatis(1)
+            .femtometres()
+            .in.zeptometres(),
+        ).toBe(1000000)
+      })
+
+      it('should give correct attometres for 1 femtometre', () => {
+        expect(
+          whatis(1)
+            .femtometres()
+            .in.attometres(),
+        ).toBe(1000)
+      })
+
+      it('should give correct femtometres for 1 femtometre', () => {
+        expect(
+          whatis(1)
+            .femtometres()
+            .in.femtometres(),
+        ).toBe(1)
+      })
+    })
+  })
 })

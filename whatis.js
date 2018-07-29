@@ -320,6 +320,102 @@ const inWeight = val => {
   })
 }
 
-const whatis = val => ({ ...inTime(val), ...inWeight(val) })
+const inLength = val => {
+  const lengths = [
+    'yoctometre',
+    'zeptometre',
+    'attometre',
+    'femtometre',
+    // 'picometre',
+  ]
+  // 10**−24 ym yoctometre
+  // 10**−21 zm zeptometre
+  // 10**−18 am attometre
+  // 10**−15 fm femtometre
+  // 10**−12 pm picometre
+  // 10**−9 nm nanometre
+  // 10**−6 µm micrometre
+  // 10**−3 mm millimetre
+  // 10**−2 cm centimetre
+  // 10**−1 dm decimetre
+  // 1 m metre
+  // 10**1 dam decametre
+  // 10**2 hm hectometre
+  // 10**3 km kilometre
+  // 10**6 Mm megametre
+  // 10**9 Gm gigametre
+  // 10**12 Tm terametre
+  // 10**15 Pm petametre
+  // 10**18 Em exametre
+  // 10**21 Zm zettametre
+  // 10**24 Ym yottametre
+
+  const yoctometreMethod = valueFrom => () =>
+    ({
+      yoctometre: val,
+      yoctometres: val,
+      zeptometre: val * 10 ** 3,
+      zeptometres: val * 10 ** 3,
+      attometre: val * 10 ** 6,
+      attometres: val * 10 ** 6,
+      femtometre: val * 10 ** 9,
+      femtometres: val * 10 ** 9,
+    }[valueFrom])
+
+  const zeptometreMethod = valueFrom => () =>
+    ({
+      yoctometre: val / 10 ** 3,
+      yoctometres: val / 10 ** 3,
+      zeptometre: val,
+      zeptometres: val,
+      attometre: val * 10 ** 3,
+      attometres: val * 10 ** 3,
+      femtometre: val * 10 ** 6,
+      femtometres: val * 10 ** 6,
+    }[valueFrom])
+
+  const attometreMethod = valueFrom => () =>
+    ({
+      yoctometre: val / 10 ** 6,
+      yoctometres: val / 10 ** 6,
+      zeptometre: val / 10 ** 3,
+      zeptometres: val / 10 ** 3,
+      attometre: val,
+      attometres: val,
+      femtometre: val * 10 ** 3,
+      femtometres: val * 10 ** 3,
+    }[valueFrom])
+
+  const femtometreMethod = valueFrom => () =>
+    ({
+      yoctometre: val / 10 ** 9,
+      yoctometres: val / 10 ** 9,
+      zeptometre: val / 10 ** 6,
+      zeptometres: val / 10 ** 6,
+      attometre: val / 10 ** 3,
+      attometres: val / 10 ** 3,
+      femtometre: val,
+      femtometres: val,
+    }[valueFrom])
+
+  const lengthMethods = {
+    yoctometre: yoctometreMethod,
+    zeptometre: zeptometreMethod,
+    attometre: attometreMethod,
+    femtometre: femtometreMethod,
+  }
+
+  const resultsInLength = createResultMethods({
+    list: lengths,
+    methods: lengthMethods,
+  })
+
+  return createMethodList({
+    list: lengths,
+    resultsIn: resultsInLength,
+  })
+}
+
+const whatis = val => ({ ...inTime(val), ...inWeight(val), ...inLength(val) })
 
 export default whatis
