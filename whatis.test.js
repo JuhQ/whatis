@@ -69,6 +69,14 @@ describe('Whatis', () => {
         ).toBe(1.855287569573284e43)
       })
 
+      it('should give correct minutes for 1 planck', () => {
+        expect(
+          whatis(1)
+            .plancks()
+            .in.minutes(),
+        ).toBe(3.0921459492888067e41)
+      })
+
       it('should give correct hours for 3600 plancks', () => {
         expect(
           whatis(3600)
@@ -143,6 +151,14 @@ describe('Whatis', () => {
         ).toBe(1)
       })
 
+      it('should give correct minutes for 1 second', () => {
+        expect(
+          whatis(1)
+            .seconds()
+            .in.minutes(),
+        ).toBe(0.016666666666666666)
+      })
+
       it('should give correct hours for 3600 seconds', () => {
         expect(
           whatis(3600)
@@ -200,6 +216,88 @@ describe('Whatis', () => {
       })
     })
 
+    describe('minutes', () => {
+      it('should give correct plancks for 1 minute', () => {
+        expect(
+          whatis(1)
+            .minutes()
+            .in.plancks(),
+        ).toBe(3.234e-42)
+      })
+
+      it('should give correct seconds for 1 minute', () => {
+        expect(
+          whatis(1)
+            .minutes()
+            .in.seconds(),
+        ).toBe(60)
+      })
+
+      it('should give correct minutes for 1 minute', () => {
+        expect(
+          whatis(1)
+            .minutes()
+            .in.minutes(),
+        ).toBe(1)
+      })
+
+      it('should give correct hours for 3600 minute', () => {
+        expect(
+          whatis(3600)
+            .minutes()
+            .in.hours(),
+        ).toBe(60)
+      })
+
+      it('should give correct days for 86400 minute', () => {
+        expect(
+          whatis(86400)
+            .minutes()
+            .in.days(),
+        ).toBe(60)
+      })
+
+      it('should give correct months for 86400 minute', () => {
+        expect(
+          whatis(86400)
+            .minutes()
+            .in.months(),
+        ).toBe(1.9726027397260273)
+      })
+
+      it('should give correct years for 86400 minute', () => {
+        expect(
+          whatis(86400)
+            .minutes()
+            .in.years(),
+        ).toBe(0.16438356164383564)
+      })
+
+      it('should give correct decades for 864000 minute', () => {
+        expect(
+          whatis(864000)
+            .minutes()
+            .in.decades(),
+        ).toBe(0.1643835616438356)
+      })
+
+      it('should give correct centuries for 864000 minute', () => {
+        expect(
+          whatis(864000)
+            .minutes()
+            .in.centuries(),
+        ).toBe(0.01643835616438356)
+      })
+
+      it('should give correct millenniums for 864000 minute', () => {
+        expect(
+          whatis(864000)
+            .minutes()
+            .in.millenniums(),
+        ).toBe(0.001643835616438356)
+      })
+    })
+
     describe('hours', () => {
       it('should give correct plancks for 1 hour', () => {
         expect(
@@ -214,6 +312,14 @@ describe('Whatis', () => {
           whatis(1)
             .hours()
             .in.seconds(),
+        ).toBe(3600)
+      })
+
+      it('should give correct minutes for 1 hour', () => {
+        expect(
+          whatis(1)
+            .hours()
+            .in.minutes(),
         ).toBe(3600)
       })
 
@@ -291,6 +397,14 @@ describe('Whatis', () => {
         ).toBe(86400)
       })
 
+      it('should give correct minutes for 1 day', () => {
+        expect(
+          whatis(1)
+            .days()
+            .in.minutes(),
+        ).toBe(86400)
+      })
+
       it('should give correct hours for 1 day', () => {
         expect(
           whatis(1)
@@ -362,6 +476,14 @@ describe('Whatis', () => {
           whatis(1)
             .months()
             .in.seconds(),
+        ).toBe(2628000)
+      })
+
+      it('should give correct minutes for 1 month', () => {
+        expect(
+          whatis(1)
+            .months()
+            .in.minutes(),
         ).toBe(2628000)
       })
 
@@ -439,6 +561,14 @@ describe('Whatis', () => {
         ).toBe(31536000)
       })
 
+      it('should give correct minutes for 1 year', () => {
+        expect(
+          whatis(1)
+            .years()
+            .in.minutes(),
+        ).toBe(31536000)
+      })
+
       it('should give correct hours for 1 year', () => {
         expect(
           whatis(1)
@@ -510,6 +640,14 @@ describe('Whatis', () => {
           whatis(1)
             .decades()
             .in.seconds(),
+        ).toBe(315360000)
+      })
+
+      it('should give correct minutes for 1 decade', () => {
+        expect(
+          whatis(1)
+            .decades()
+            .in.minutes(),
         ).toBe(315360000)
       })
 
@@ -587,6 +725,14 @@ describe('Whatis', () => {
         ).toBe(3153600000)
       })
 
+      it('should give correct minutes for 1 century', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.minutes(),
+        ).toBe(3153600000)
+      })
+
       it('should give correct hours for 1 century', () => {
         expect(
           whatis(1)
@@ -658,6 +804,14 @@ describe('Whatis', () => {
           whatis(1)
             .millenniums()
             .in.seconds(),
+        ).toBe(31536000000)
+      })
+
+      it('should give correct minutes for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.minutes(),
         ).toBe(31536000000)
       })
 
