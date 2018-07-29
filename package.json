@@ -7,7 +7,7 @@
     "test": "jest --watch --silent",
     "test-ci": "jest --silent",
     "test-coverage": "jest --coverage",
-    "test-coverage-ci": "jest --coverage"
+    "test-coverage-ci": "jest --coverage --silent"
   },
   "husky": {
     "hooks": {
