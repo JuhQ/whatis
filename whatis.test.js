@@ -41,6 +41,8 @@ describe('Whatis', () => {
         'years',
         'decade',
         'decades',
+        'century',
+        'centuries',
       ]
 
       shouldHaveMethods(methods)
@@ -342,6 +344,64 @@ describe('Whatis', () => {
           whatis(1)
             .decades()
             .in.decades(),
+        ).toBe(1)
+      })
+    })
+
+    describe('centuries', () => {
+      it('should give correct seconds for 1 decade', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.seconds(),
+        ).toBe(3153600000)
+      })
+
+      it('should give correct hours for 1 decade', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.hours(),
+        ).toBe(876000)
+      })
+
+      it('should give correct days for 1 decade', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.days(),
+        ).toBe(36500)
+      })
+
+      it('should give correct months for 1 decade', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.months(),
+        ).toBe(1200)
+      })
+
+      it('should give correct year for 1 decade', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.years(),
+        ).toBe(100)
+      })
+
+      it('should give correct centuries for 1 decade', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.decades(),
+        ).toBe(10)
+      })
+
+      it('should give correct centuries for 1 century', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.centuries(),
         ).toBe(1)
       })
     })

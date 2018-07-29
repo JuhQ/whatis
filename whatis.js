@@ -1,18 +1,50 @@
+const consonants = 'bcdfghjklmnpqrstvxzwy'
+const vowels = 'aeiouyw'
+
+const last = str => str[str.length - 1]
+
+const secondLast = str => str[str.length - 2]
+
+const endsIn = (str, endChar) => last(str) === endChar
+
+const createMethodNameWithPresentTense = key => {
+  const secondLastLetter = secondLast(key)
+
+  if (
+    consonants.includes(secondLastLetter) &&
+    !vowels.includes(secondLastLetter) &&
+    endsIn(key, 'y')
+  ) {
+    return key.replace(/y$/, 'ies')
+  }
+
+  return `${key}s`
+}
+
 const createMethodList = ({ list, resultsIn }) =>
-  list.reduce((initial, key) => [...initial, key, `${key}s`], []).reduce(
-    (initial, key) => ({
-      ...initial,
-      [key]: () => ({ in: resultsIn(key) }),
-    }),
-    {},
-  )
+  list
+    .reduce(
+      (initial, key) => [
+        ...initial,
+        key,
+        createMethodNameWithPresentTense(key),
+      ],
+      [],
+    )
+    .reduce(
+      (initial, key) => ({
+        ...initial,
+        [key]: () => ({ in: resultsIn(key) }),
+      }),
+      {},
+    )
 
 const createResultMethods = ({ list, methods }) => valueFrom =>
   list.reduce(
     (initial, key) => ({
       ...initial,
       [key]: methods[key](valueFrom),
-      [`${key}s`]: methods[key](valueFrom),
+      [createMethodNameWithPresentTense(key)]: methods[key](valueFrom),
     }),
     {},
   )
@@ -27,6 +59,7 @@ const inTime = val => {
     'month',
     'year',
     'decade',
+    'century',
   ]
 
   const daysInYear = 365
@@ -52,6 +85,8 @@ const inTime = val => {
       years: val * 60 * 60 * 24 * daysInYear,
       decade: val * 60 * 60 * 24 * daysInYear * 10,
       decades: val * 60 * 60 * 24 * daysInYear * 10,
+      century: val * 60 * 60 * 24 * daysInYear * 100,
+      centuries: val * 60 * 60 * 24 * daysInYear * 100,
     }[valueFrom])
 
   const minutesMethod = valueFrom => () =>
@@ -72,6 +107,8 @@ const inTime = val => {
       years: val * 60 * 60 * 24 * daysInYear,
       decade: val * 60 * 60 * 24 * daysInYear * 10,
       decades: val * 60 * 60 * 24 * daysInYear * 10,
+      century: val * 60 * 60 * 24 * daysInYear * 100,
+      centuries: val * 60 * 60 * 24 * daysInYear * 100,
     }[valueFrom])
 
   const hoursMethod = valueFrom => () =>
@@ -92,6 +129,8 @@ const inTime = val => {
       years: val * 24 * daysInYear,
       decade: val * 24 * daysInYear * 10,
       decades: val * 24 * daysInYear * 10,
+      century: val * 24 * daysInYear * 100,
+      centuries: val * 24 * daysInYear * 100,
     }[valueFrom])
 
   const daysMethod = valueFrom => () =>
@@ -112,6 +151,8 @@ const inTime = val => {
       years: val * daysInYear,
       decade: val * daysInYear * 10,
       decades: val * daysInYear * 10,
+      century: val * daysInYear * 100,
+      centuries: val * daysInYear * 100,
     }[valueFrom])
 
   const weeksMethod = valueFrom => () =>
@@ -132,6 +173,8 @@ const inTime = val => {
       years: val * daysInYear,
       decade: val * daysInYear * 10,
       decades: val * daysInYear * 10,
+      century: val * daysInYear * 100,
+      centuries: val * daysInYear * 100,
     }[valueFrom])
 
   const monthsMethod = valueFrom => () =>
@@ -152,6 +195,8 @@ const inTime = val => {
       years: val * monthsInYear,
       decade: val * monthsInYear * 10,
       decades: val * monthsInYear * 10,
+      century: val * monthsInYear * 100,
+      centuries: val * monthsInYear * 100,
     }[valueFrom])
 
   const yearsMethod = valueFrom => () =>
@@ -172,6 +217,8 @@ const inTime = val => {
       years: val,
       decade: val * 10,
       decades: val * 10,
+      century: val * 100,
+      centuries: val * 100,
     }[valueFrom])
 
   const decadesMethod = valueFrom => () =>
@@ -192,6 +239,30 @@ const inTime = val => {
       years: val / 10,
       decade: val,
       decades: val,
+      century: val * 10,
+      centuries: val * 10,
+    }[valueFrom])
+
+  const centuriesMethod = valueFrom => () =>
+    ({
+      second: val / daysInYear / 24 / 60 / 60 / 100,
+      seconds: val / daysInYear / 24 / 60 / 60 / 100,
+      minute: val / daysInYear / 24 / 60 / 100,
+      minutes: val / daysInYear / 24 / 60 / 100,
+      hour: val / daysInYear / 24 / 100,
+      hours: val / daysInYear / 24 / 100,
+      day: val / daysInYear / 100,
+      days: val / daysInYear / 100,
+      week: val / 52 / 100,
+      weeks: val / 52 / 100,
+      month: val / monthsInYear / 100,
+      months: val / monthsInYear / 100,
+      year: val / 100,
+      years: val / 100,
+      decade: val / 10,
+      decades: val / 10,
+      century: val,
+      centuries: val,
     }[valueFrom])
 
   const timeMethods = {
@@ -203,6 +274,7 @@ const inTime = val => {
     month: monthsMethod,
     year: yearsMethod,
     decade: decadesMethod,
+    century: centuriesMethod,
   }
 
   const resultsInTime = createResultMethods({
