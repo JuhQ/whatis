@@ -6,11 +6,12 @@
   "scripts": {
     "test": "jest --watch --silent",
     "test-ci": "jest --silent",
-    "test-coverage": "jest --coverage"
+    "test-coverage": "jest --coverage",
+    "test-coverage-ci": "jest --coverage"
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run test-ci"
+      "pre-push": "npm run test-coverage-ci"
     }
   },
   "repository": {
