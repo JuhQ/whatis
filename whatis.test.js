@@ -25,6 +25,8 @@ describe('Whatis', () => {
   describe('time units', () => {
     describe('methods', () => {
       const methods = [
+        'planck',
+        'plancks',
         'second',
         'seconds',
         'minute',
@@ -50,7 +52,89 @@ describe('Whatis', () => {
       shouldHaveMethods(methods)
     })
 
+    describe('plancks', () => {
+      it('should give correct plancks for 1 planck', () => {
+        expect(
+          whatis(1)
+            .plancks()
+            .in.plancks(),
+        ).toBe(1)
+      })
+
+      it('should give correct seconds for 1 planck', () => {
+        expect(
+          whatis(1)
+            .plancks()
+            .in.seconds(),
+        ).toBe(1.855287569573284e43)
+      })
+
+      it('should give correct hours for 3600 plancks', () => {
+        expect(
+          whatis(3600)
+            .plancks()
+            .in.hours(),
+        ).toBe(1.8552875695732842e43)
+      })
+
+      it('should give correct days for 86400 plancks', () => {
+        expect(
+          whatis(86400)
+            .plancks()
+            .in.days(),
+        ).toBe(1.8552875695732842e43)
+      })
+
+      it('should give correct months for 86400 plancks', () => {
+        expect(
+          whatis(86400)
+            .plancks()
+            .in.months(),
+        ).toBe(6.099575571199838e41)
+      })
+
+      it('should give correct years for 86400 plancks', () => {
+        expect(
+          whatis(86400)
+            .plancks()
+            .in.years(),
+        ).toBe(5.082979642666531e40)
+      })
+
+      it('should give correct decades for 864000 plancks', () => {
+        expect(
+          whatis(864000)
+            .plancks()
+            .in.decades(),
+        ).toBe(5.082979642666531e40)
+      })
+
+      it('should give correct centuries for 864000 plancks', () => {
+        expect(
+          whatis(864000)
+            .plancks()
+            .in.centuries(),
+        ).toBe(5.082979642666532e39)
+      })
+
+      it('should give correct millenniums for 864000 plancks', () => {
+        expect(
+          whatis(864000)
+            .plancks()
+            .in.millenniums(),
+        ).toBe(5.0829796426665315e38)
+      })
+    })
+
     describe('seconds', () => {
+      it('should give correct plancks for 1 second', () => {
+        expect(
+          whatis(1)
+            .seconds()
+            .in.plancks(),
+        ).toBe(5.39e-44)
+      })
+
       it('should give correct seconds for 1 second', () => {
         expect(
           whatis(1)
@@ -59,7 +143,7 @@ describe('Whatis', () => {
         ).toBe(1)
       })
 
-      it('should give correct hours for 3600 second', () => {
+      it('should give correct hours for 3600 seconds', () => {
         expect(
           whatis(3600)
             .seconds()
@@ -117,6 +201,14 @@ describe('Whatis', () => {
     })
 
     describe('hours', () => {
+      it('should give correct plancks for 1 hour', () => {
+        expect(
+          whatis(1)
+            .hours()
+            .in.plancks(),
+        ).toBe(1.9404e-40)
+      })
+
       it('should give correct seconds for 1 hour', () => {
         expect(
           whatis(1)
@@ -183,6 +275,14 @@ describe('Whatis', () => {
     })
 
     describe('days', () => {
+      it('should give correct plancks for 1 day', () => {
+        expect(
+          whatis(1)
+            .days()
+            .in.plancks(),
+        ).toBe(4.65696e-39)
+      })
+
       it('should give correct seconds for 1 day', () => {
         expect(
           whatis(1)
@@ -249,6 +349,14 @@ describe('Whatis', () => {
     })
 
     describe('months', () => {
+      it('should give correct plancks for 1 month', () => {
+        expect(
+          whatis(1)
+            .months()
+            .in.plancks(),
+        ).toBe(1.416492e-37)
+      })
+
       it('should give correct seconds for 1 month', () => {
         expect(
           whatis(1)
@@ -315,6 +423,14 @@ describe('Whatis', () => {
     })
 
     describe('years', () => {
+      it('should give correct plancks for 1 year', () => {
+        expect(
+          whatis(1)
+            .years()
+            .in.plancks(),
+        ).toBe(1.6997904e-36)
+      })
+
       it('should give correct seconds for 1 year', () => {
         expect(
           whatis(1)
@@ -381,6 +497,14 @@ describe('Whatis', () => {
     })
 
     describe('decades', () => {
+      it('should give correct plancks for 1 decade', () => {
+        expect(
+          whatis(1)
+            .decades()
+            .in.plancks(),
+        ).toBe(1.6997904000000003e-35)
+      })
+
       it('should give correct seconds for 1 decade', () => {
         expect(
           whatis(1)
@@ -447,6 +571,14 @@ describe('Whatis', () => {
     })
 
     describe('centuries', () => {
+      it('should give correct plancks for 1 century', () => {
+        expect(
+          whatis(1)
+            .centuries()
+            .in.plancks(),
+        ).toBe(1.6997904000000002e-34)
+      })
+
       it('should give correct seconds for 1 century', () => {
         expect(
           whatis(1)
@@ -513,6 +645,14 @@ describe('Whatis', () => {
     })
 
     describe('millenniums', () => {
+      it('should give correct plancks for 1 millennium', () => {
+        expect(
+          whatis(1)
+            .millenniums()
+            .in.plancks(),
+        ).toBe(1.6997904e-33)
+      })
+
       it('should give correct seconds for 1 millennium', () => {
         expect(
           whatis(1)

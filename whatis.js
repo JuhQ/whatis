@@ -61,6 +61,7 @@ const createMethodPairs = methods => valueFrom => () =>
 
 const inTime = val => {
   const time = [
+    'planck',
     'second',
     'minute',
     'hour',
@@ -78,7 +79,24 @@ const inTime = val => {
 
   const daysInMonth = daysInYear / monthsInYear
 
+  const planckConstant = 5.39 * 10 ** -44
+
+  const planckTimeUnitMethod = createMethodPairs({
+    planck: val,
+    second: val * planckConstant,
+    minute: val * planckConstant * 60,
+    hour: val * planckConstant * 60 * 60,
+    day: val * planckConstant * 60 * 60 * 24,
+    week: val * planckConstant * 60 * 60 * 24 * 7,
+    month: val * planckConstant * 60 * 60 * 24 * daysInMonth,
+    year: val * planckConstant * 60 * 60 * 24 * daysInYear,
+    decade: val * planckConstant * 60 * 60 * 24 * daysInYear * 10,
+    century: val * planckConstant * 60 * 60 * 24 * daysInYear * 100,
+    millennium: val * planckConstant * 60 * 60 * 24 * daysInYear * 1000,
+  })
+
   const secondsMethod = createMethodPairs({
+    planck: val / planckConstant,
     second: val,
     minute: val * 60,
     hour: val * 60 * 60,
@@ -92,6 +110,7 @@ const inTime = val => {
   })
 
   const minutesMethod = createMethodPairs({
+    planck: val / planckConstant / 60,
     second: val / 60,
     minute: val,
     hour: val * 60 * 60,
@@ -105,6 +124,7 @@ const inTime = val => {
   })
 
   const hoursMethod = createMethodPairs({
+    planck: val / planckConstant / 60 / 60,
     second: val / 60 / 60,
     minute: val / 60,
     hour: val,
@@ -118,6 +138,7 @@ const inTime = val => {
   })
 
   const daysMethod = createMethodPairs({
+    planck: val / planckConstant / 24 / 60 / 60,
     second: val / 24 / 60 / 60,
     minute: val / 24 / 60,
     hour: val / 24,
@@ -131,6 +152,7 @@ const inTime = val => {
   })
 
   const weeksMethod = createMethodPairs({
+    planck: val / planckConstant / 7 / 24 / 60 / 60,
     second: val / 7 / 24 / 60 / 60,
     minute: val / 7 / 24 / 60,
     hour: val / 7 / 24,
@@ -144,6 +166,7 @@ const inTime = val => {
   })
 
   const monthsMethod = createMethodPairs({
+    planck: val / planckConstant / daysInMonth / 24 / 3600,
     second: val / daysInMonth / 24 / 3600,
     minute: val / daysInMonth / 24 / 60,
     hour: val / daysInMonth / 24,
@@ -157,6 +180,7 @@ const inTime = val => {
   })
 
   const yearsMethod = createMethodPairs({
+    planck: val / planckConstant / daysInYear / 24 / 60 / 60,
     second: val / daysInYear / 24 / 60 / 60,
     minute: val / daysInYear / 24 / 60,
     hour: val / daysInYear / 24,
@@ -170,6 +194,7 @@ const inTime = val => {
   })
 
   const decadesMethod = createMethodPairs({
+    planck: val / planckConstant / daysInYear / 24 / 60 / 60 / 10,
     second: val / daysInYear / 24 / 60 / 60 / 10,
     minute: val / daysInYear / 24 / 60 / 10,
     hour: val / daysInYear / 24 / 10,
@@ -183,6 +208,7 @@ const inTime = val => {
   })
 
   const centuriesMethod = createMethodPairs({
+    planck: val / planckConstant / daysInYear / 24 / 60 / 60 / 100,
     second: val / daysInYear / 24 / 60 / 60 / 100,
     minute: val / daysInYear / 24 / 60 / 100,
     hour: val / daysInYear / 24 / 100,
@@ -196,6 +222,7 @@ const inTime = val => {
   })
 
   const millenniumsMethod = createMethodPairs({
+    planck: val / planckConstant / daysInYear / 24 / 60 / 60 / 1000,
     second: val / daysInYear / 24 / 60 / 60 / 1000,
     minute: val / daysInYear / 24 / 60 / 1000,
     hour: val / daysInYear / 24 / 1000,
@@ -209,6 +236,7 @@ const inTime = val => {
   })
 
   const timeMethods = {
+    planck: planckTimeUnitMethod,
     second: secondsMethod,
     minute: minutesMethod,
     hour: hoursMethod,
