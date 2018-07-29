@@ -462,8 +462,8 @@ describe('Whatis', () => {
         'attometres',
         'femtometre',
         'femtometres',
-        // 'picometre',
-        // 'picometres',
+        'picometre',
+        'picometres',
       ]
 
       shouldHaveMethods(methods)
@@ -501,6 +501,14 @@ describe('Whatis', () => {
             .in.femtometres(),
         ).toBe(1e-9)
       })
+
+      it('should give correct picometres for 1 yoctometre', () => {
+        expect(
+          whatis(1)
+            .yoctometres()
+            .in.picometres(),
+        ).toBe(1e-12)
+      })
     })
 
     describe('zeptometres', () => {
@@ -534,6 +542,14 @@ describe('Whatis', () => {
             .zeptometres()
             .in.femtometres(),
         ).toBe(1e-6)
+      })
+
+      it('should give correct picometres for 1 zeptometre', () => {
+        expect(
+          whatis(1)
+            .zeptometres()
+            .in.picometres(),
+        ).toBe(1e-9)
       })
     })
 
@@ -569,6 +585,14 @@ describe('Whatis', () => {
             .in.femtometres(),
         ).toBe(0.001)
       })
+
+      it('should give correct picometres for 1 attometre', () => {
+        expect(
+          whatis(1)
+            .attometres()
+            .in.picometres(),
+        ).toBe(0.000001)
+      })
     })
 
     describe('femtometres', () => {
@@ -601,6 +625,56 @@ describe('Whatis', () => {
           whatis(1)
             .femtometres()
             .in.femtometres(),
+        ).toBe(1)
+      })
+
+      it('should give correct picometres for 1 femtometre', () => {
+        expect(
+          whatis(1)
+            .femtometres()
+            .in.picometres(),
+        ).toBe(0.001)
+      })
+    })
+
+    describe('picometres', () => {
+      it('should give correct yoctometres for 1 picometre', () => {
+        expect(
+          whatis(1)
+            .picometres()
+            .in.yoctometres(),
+        ).toBe(1000000000000)
+      })
+
+      it('should give correct zeptometres for 1 picometres', () => {
+        expect(
+          whatis(1)
+            .picometres()
+            .in.zeptometres(),
+        ).toBe(1000000000)
+      })
+
+      it('should give correct attometres for 1 picometre', () => {
+        expect(
+          whatis(1)
+            .picometres()
+            .in.attometres(),
+        ).toBe(1000000)
+      })
+
+      it('should give correct femtometres for 1 picometre', () => {
+        expect(
+          whatis(1)
+            .picometres()
+            .in.femtometres(),
+        ).toBe(1000)
+      })
+
+      it('should give correct picometres for 1 picometre', () => {
+        expect(
+          whatis(1)
+            .picometres()
+            .in.picometres(),
         ).toBe(1)
       })
     })

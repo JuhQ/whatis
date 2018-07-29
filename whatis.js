@@ -240,7 +240,7 @@ const inLength = val => {
     'zeptometre',
     'attometre',
     'femtometre',
-    // 'picometre',
+    'picometre',
   ]
   // 10**−24 ym yoctometre
   // 10**−21 zm zeptometre
@@ -269,6 +269,7 @@ const inLength = val => {
     zeptometre: val * 10 ** 3,
     attometre: val * 10 ** 6,
     femtometre: val * 10 ** 9,
+    picometre: val * 10 ** 12,
   })
 
   const zeptometreMethod = createMethodPairs({
@@ -276,6 +277,7 @@ const inLength = val => {
     zeptometre: val,
     attometre: val * 10 ** 3,
     femtometre: val * 10 ** 6,
+    picometre: val * 10 ** 9,
   })
 
   const attometreMethod = createMethodPairs({
@@ -283,6 +285,7 @@ const inLength = val => {
     zeptometre: val / 10 ** 3,
     attometre: val,
     femtometre: val * 10 ** 3,
+    picometre: val * 10 ** 6,
   })
 
   const femtometreMethod = createMethodPairs({
@@ -290,6 +293,15 @@ const inLength = val => {
     zeptometre: val / 10 ** 6,
     attometre: val / 10 ** 3,
     femtometre: val,
+    picometre: val * 10 ** 3,
+  })
+
+  const picometreMethod = createMethodPairs({
+    yoctometre: val / 10 ** 12,
+    zeptometre: val / 10 ** 9,
+    attometre: val / 10 ** 6,
+    femtometre: val / 10 ** 3,
+    picometre: val,
   })
 
   const lengthMethods = {
@@ -297,6 +309,7 @@ const inLength = val => {
     zeptometre: zeptometreMethod,
     attometre: attometreMethod,
     femtometre: femtometreMethod,
+    picometre: picometreMethod,
   }
 
   const resultsInLength = createResultMethods({
