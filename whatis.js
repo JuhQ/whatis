@@ -245,6 +245,8 @@ const inLength = val => {
     'decimetre',
     'metre',
     'decametre',
+    'hectometre',
+    'kilometre',
   ]
 
   // 10**−24 ym yoctometre
@@ -282,6 +284,8 @@ const inLength = val => {
     decimetre: val * 1e27,
     metre: val * 1e30,
     decametre: val * 1e33,
+    hectometre: val * 1e36,
+    kilometre: val * 1e39,
   })
 
   const zeptometreMethod = createMethodPairs({
@@ -297,6 +301,8 @@ const inLength = val => {
     decimetre: val * 1e24,
     metre: val * 1e27,
     decametre: val * 1e30,
+    hectometre: val * 1e33,
+    kilometre: val * 1e36,
   })
 
   const attometreMethod = createMethodPairs({
@@ -312,6 +318,8 @@ const inLength = val => {
     decimetre: val * 1e21,
     metre: val * 1e24,
     decametre: val * 1e27,
+    hectometre: val * 1e30,
+    kilometre: val * 1e33,
   })
 
   const femtometreMethod = createMethodPairs({
@@ -327,6 +335,8 @@ const inLength = val => {
     decimetre: val * 1e18,
     metre: val * 1e21,
     decametre: val * 1e24,
+    hectometre: val * 1e27,
+    kilometre: val * 1e30,
   })
 
   const picometreMethod = createMethodPairs({
@@ -342,6 +352,8 @@ const inLength = val => {
     decimetre: val * 1e15,
     metre: val * 1e18,
     decametre: val * 1e21,
+    hectometre: val * 1e24,
+    kilometre: val * 1e27,
   })
 
   const nanometreMethod = createMethodPairs({
@@ -357,6 +369,8 @@ const inLength = val => {
     decimetre: val * 1e12,
     metre: val * 1e15,
     decametre: val * 1e18,
+    hectometre: val * 1e21,
+    kilometre: val * 1e24,
   })
 
   const micrometreMethod = createMethodPairs({
@@ -372,6 +386,8 @@ const inLength = val => {
     decimetre: val * 1e9,
     metre: val * 1e12,
     decametre: val * 1e15,
+    hectometre: val * 1e18,
+    kilometre: val * 1e21,
   })
 
   const millimetreMethod = createMethodPairs({
@@ -387,6 +403,8 @@ const inLength = val => {
     decimetre: val * 1e6,
     metre: val * 1e9,
     decametre: val * 1e12,
+    hectometre: val * 1e15,
+    kilometre: val * 1e18,
   })
 
   const centimetreMethod = createMethodPairs({
@@ -402,6 +420,8 @@ const inLength = val => {
     decimetre: val * 1e3,
     metre: val * 1e6,
     decametre: val * 1e9,
+    hectometre: val * 1e12,
+    kilometre: val * 1e15,
   })
 
   const decimetreMethod = createMethodPairs({
@@ -417,6 +437,8 @@ const inLength = val => {
     decimetre: val,
     metre: val * 1e3,
     decametre: val * 1e6,
+    hectometre: val * 1e9,
+    kilometre: val * 1e12,
   })
 
   const metreMethod = createMethodPairs({
@@ -432,6 +454,8 @@ const inLength = val => {
     decimetre: val / 1e3,
     metre: val,
     decametre: val * 1e3,
+    hectometre: val * 1e6,
+    kilometre: val * 1e9,
   })
 
   const decametreMethod = createMethodPairs({
@@ -447,6 +471,42 @@ const inLength = val => {
     decimetre: val / 1e6,
     metre: val / 1e3,
     decametre: val,
+    hectometre: val * 1e3,
+    kilometre: val * 1e6,
+  })
+
+  const hectometreMethod = createMethodPairs({
+    yoctometre: val / 1e36,
+    zeptometre: val / 1e33,
+    attometre: val / 1e30,
+    femtometre: val / 1e27,
+    picometre: val / 1e24,
+    nanometre: val / 1e21,
+    micrometre: val / 1e18,
+    millimetre: val / 1e15,
+    centimetre: val / 1e12,
+    decimetre: val / 1e9,
+    metre: val / 1e6,
+    decametre: val / 1e3,
+    hectometre: val,
+    kilometre: val * 1e3,
+  })
+
+  const kilometreMethod = createMethodPairs({
+    yoctometre: val / 1e39,
+    zeptometre: val / 1e36,
+    attometre: val / 1e33,
+    femtometre: val / 1e30,
+    picometre: val / 1e27,
+    nanometre: val / 1e24,
+    micrometre: val / 1e21,
+    millimetre: val / 1e18,
+    centimetre: val / 1e15,
+    decimetre: val / 1e12,
+    metre: val / 1e9,
+    decametre: val / 1e6,
+    hectometre: val / 1e3,
+    kilometre: val,
   })
 
   const lengthMethods = {
@@ -462,6 +522,8 @@ const inLength = val => {
     decimetre: decimetreMethod,
     metre: metreMethod,
     decametre: decametreMethod,
+    hectometre: hectometreMethod,
+    kilometre: kilometreMethod,
   }
 
   const resultsInLength = createResultMethods({
