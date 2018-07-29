@@ -5,7 +5,13 @@
   "main": "whatis.js",
   "scripts": {
     "test": "jest --watch --silent",
+    "test-ci": "jest --silent",
     "test-coverage": "jest --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test-ci"
+    }
   },
   "repository": {
     "type": "git",
@@ -30,6 +36,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
+    "husky": "^1.0.0-rc.13",
     "jest": "^23.4.1",
     "prettier": "^1.13.7",
     "regenerator-runtime": "^0.12.0"
