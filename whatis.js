@@ -240,6 +240,7 @@ const inLength = val => {
     'picometre',
     'nanometre',
     'micrometre',
+    'millimetre',
   ]
 
   // 10**−24 ym yoctometre
@@ -272,6 +273,7 @@ const inLength = val => {
     picometre: val * 10 ** 12,
     nanometre: val * 10 ** 15,
     micrometre: val * 10 ** 18,
+    millimetre: val * 10 ** 21,
   })
 
   const zeptometreMethod = createMethodPairs({
@@ -282,6 +284,7 @@ const inLength = val => {
     picometre: val * 10 ** 9,
     nanometre: val * 10 ** 12,
     micrometre: val * 10 ** 15,
+    millimetre: val * 10 ** 18,
   })
 
   const attometreMethod = createMethodPairs({
@@ -292,6 +295,7 @@ const inLength = val => {
     picometre: val * 10 ** 6,
     nanometre: val * 10 ** 9,
     micrometre: val * 10 ** 12,
+    millimetre: val * 10 ** 15,
   })
 
   const femtometreMethod = createMethodPairs({
@@ -302,6 +306,7 @@ const inLength = val => {
     picometre: val * 10 ** 3,
     nanometre: val * 10 ** 6,
     micrometre: val * 10 ** 9,
+    millimetre: val * 10 ** 12,
   })
 
   const picometreMethod = createMethodPairs({
@@ -312,6 +317,7 @@ const inLength = val => {
     picometre: val,
     nanometre: val * 10 ** 3,
     micrometre: val * 10 ** 6,
+    millimetre: val * 10 ** 9,
   })
 
   const nanometreMethod = createMethodPairs({
@@ -322,6 +328,7 @@ const inLength = val => {
     picometre: val / 10 ** 3,
     nanometre: val,
     micrometre: val * 10 ** 3,
+    millimetre: val * 10 ** 6,
   })
 
   const micrometreMethod = createMethodPairs({
@@ -332,6 +339,18 @@ const inLength = val => {
     picometre: val / 10 ** 6,
     nanometre: val / 10 ** 3,
     micrometre: val,
+    millimetre: val * 10 ** 3,
+  })
+
+  const millimetreMethod = createMethodPairs({
+    yoctometre: val / 10 ** 21,
+    zeptometre: val / 10 ** 18,
+    attometre: val / 10 ** 15,
+    femtometre: val / 10 ** 12,
+    picometre: val / 10 ** 9,
+    nanometre: val / 10 ** 6,
+    micrometre: val / 10 ** 3,
+    millimetre: val,
   })
 
   const lengthMethods = {
@@ -342,6 +361,7 @@ const inLength = val => {
     picometre: picometreMethod,
     nanometre: nanometreMethod,
     micrometre: micrometreMethod,
+    millimetre: millimetreMethod,
   }
 
   const resultsInLength = createResultMethods({
