@@ -14,6 +14,10 @@
       "pre-push": "npm run test-coverage-ci"
     }
   },
+  "jest": {
+    "testURL": "http://localhost/",
+    "testEnvironment": "node"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JuhQ/whatis.git"
@@ -27,7 +31,7 @@
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
-    "babel-jest": "^23.4.0",
+    "babel-jest": "^23.4.2",
     "babel-preset-env": "^1.7.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
@@ -38,8 +42,8 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
     "husky": "^1.0.0-rc.13",
-    "jest": "^23.4.1",
-    "prettier": "^1.13.7",
+    "jest": "^23.4.2",
+    "prettier": "^1.14.0",
     "regenerator-runtime": "^0.12.0"
   }
 }
