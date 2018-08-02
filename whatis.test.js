@@ -260,6 +260,8 @@ describe('Whatis', () => {
       'kilometres',
       'megametre',
       'megametres',
+      'gigametre',
+      'gigametres',
     ]
 
     shouldHaveMethods(methods)
@@ -282,6 +284,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-36 },
           { val: 1, to: 'kilometre', result: 1.0000000000000001e-39 },
           { val: 1, to: 'megametre', result: 9.999999999999999e-43 },
+          { val: 1, to: 'gigametre', result: 1e-46 },
         ],
         zeptometre: [
           { val: 1, to: 'yoctometres', result: 1e3 },
@@ -299,6 +302,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-33 },
           { val: 1, to: 'kilometre', result: 1e-36 },
           { val: 1, to: 'megametre', result: 1.0000000000000001e-39 },
+          { val: 1, to: 'gigametre', result: 9.999999999999999e-43 },
         ],
         attometres: [
           { val: 1, to: 'yoctometres', result: 1e6 },
@@ -316,6 +320,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 9.999999999999999e-31 },
           { val: 1, to: 'kilometre', result: 1e-33 },
           { val: 1, to: 'megametre', result: 1e-36 },
+          { val: 1, to: 'gigametre', result: 1.0000000000000001e-39 },
         ],
         femtometres: [
           { val: 1, to: 'yoctometres', result: 1e9 },
@@ -333,6 +338,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-27 },
           { val: 1, to: 'kilometre', result: 9.999999999999999e-31 },
           { val: 1, to: 'megametre', result: 1e-33 },
+          { val: 1, to: 'gigametre', result: 1e-36 },
         ],
         picometres: [
           { val: 1, to: 'yoctometres', result: 1e12 },
@@ -350,6 +356,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1.0000000000000001e-24 },
           { val: 1, to: 'kilometre', result: 1e-27 },
           { val: 1, to: 'megametre', result: 9.999999999999999e-31 },
+          { val: 1, to: 'gigametre', result: 1e-33 },
         ],
         nanometres: [
           { val: 1, to: 'yoctometres', result: 1e15 },
@@ -367,6 +374,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-21 },
           { val: 1, to: 'kilometre', result: 1.0000000000000001e-24 },
           { val: 1, to: 'megametre', result: 1e-27 },
+          { val: 1, to: 'gigametre', result: 9.999999999999999e-31 },
         ],
         micrometres: [
           { val: 1, to: 'yoctometres', result: 1e18 },
@@ -384,6 +392,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-18 },
           { val: 1, to: 'kilometre', result: 1e-21 },
           { val: 1, to: 'megametre', result: 1.0000000000000001e-24 },
+          { val: 1, to: 'gigametre', result: 1e-27 },
         ],
         millimetre: [
           { val: 1, to: 'yoctometres', result: 1e21 },
@@ -401,6 +410,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-15 },
           { val: 1, to: 'kilometre', result: 1e-18 },
           { val: 1, to: 'megametre', result: 1e-21 },
+          { val: 1, to: 'gigametre', result: 1.0000000000000001e-24 },
         ],
         centimetre: [
           { val: 1, to: 'yoctometres', result: 1e24 },
@@ -418,6 +428,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-12 },
           { val: 1, to: 'kilometre', result: 1e-15 },
           { val: 1, to: 'megametre', result: 1e-18 },
+          { val: 1, to: 'gigametre', result: 1e-21 },
         ],
         decimetre: [
           { val: 1, to: 'yoctometres', result: 1e27 },
@@ -435,6 +446,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-9 },
           { val: 1, to: 'kilometre', result: 1e-12 },
           { val: 1, to: 'megametre', result: 1e-15 },
+          { val: 1, to: 'gigametre', result: 1e-18 },
         ],
         metre: [
           { val: 1, to: 'yoctometres', result: 1e30 },
@@ -452,6 +464,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-6 },
           { val: 1, to: 'kilometre', result: 1e-9 },
           { val: 1, to: 'megametre', result: 1e-12 },
+          { val: 1, to: 'gigametre', result: 1e-15 },
         ],
         decametre: [
           { val: 1, to: 'yoctometres', result: 1e33 },
@@ -469,6 +482,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e-3 },
           { val: 1, to: 'kilometre', result: 1e-6 },
           { val: 1, to: 'megametre', result: 1e-9 },
+          { val: 1, to: 'gigametre', result: 1e-12 },
         ],
         hectometre: [
           { val: 1, to: 'yoctometres', result: 1e36 },
@@ -486,6 +500,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1 },
           { val: 1, to: 'kilometre', result: 1e-3 },
           { val: 1, to: 'megametre', result: 1e-6 },
+          { val: 1, to: 'gigametre', result: 1e-9 },
         ],
         kilometre: [
           { val: 1, to: 'yoctometres', result: 1e39 },
@@ -503,6 +518,7 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e3 },
           { val: 1, to: 'kilometre', result: 1 },
           { val: 1, to: 'megametre', result: 1e-3 },
+          { val: 1, to: 'gigametre', result: 1e-6 },
         ],
         megametre: [
           { val: 1, to: 'yoctometres', result: 1e42 },
@@ -520,6 +536,25 @@ describe('Whatis', () => {
           { val: 1, to: 'hectometre', result: 1e6 },
           { val: 1, to: 'kilometre', result: 1e3 },
           { val: 1, to: 'megametre', result: 1 },
+          { val: 1, to: 'gigametre', result: 1e-3 },
+        ],
+        gigametre: [
+          { val: 1, to: 'yoctometres', result: 1e45 },
+          { val: 1, to: 'zeptometre', result: 1e42 },
+          { val: 1, to: 'attometres', result: 1e39 },
+          { val: 1, to: 'femtometres', result: 1e36 },
+          { val: 1, to: 'picometres', result: 1e33 },
+          { val: 1, to: 'nanometres', result: 1e30 },
+          { val: 1, to: 'micrometres', result: 1e27 },
+          { val: 1, to: 'millimetres', result: 1e24 },
+          { val: 1, to: 'centimetres', result: 1e21 },
+          { val: 1, to: 'decimetre', result: 1e18 },
+          { val: 1, to: 'metre', result: 1e15 },
+          { val: 1, to: 'decametre', result: 1e12 },
+          { val: 1, to: 'hectometre', result: 1e9 },
+          { val: 1, to: 'kilometre', result: 1e6 },
+          { val: 1, to: 'megametre', result: 1e3 },
+          { val: 1, to: 'gigametre', result: 1 },
         ],
       },
     ]
