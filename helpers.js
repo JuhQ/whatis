@@ -20,11 +20,14 @@ const createMethodNameWithPresentTense = key => {
 
   return `${key}s`
 }
+const createUniqueNames = ({ key, method }) =>
+  key === 'millennium' ? { millennia: method(key) } : null
 
 const createMethodNamesWithValues = ({ list, method }) =>
   list.reduce(
     (initial, key) => ({
       ...initial,
+      ...createUniqueNames({ key, method }),
       [key]: method(key),
       [createMethodNameWithPresentTense(key)]: method(key),
     }),
