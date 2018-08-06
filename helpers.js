@@ -21,40 +21,30 @@ const createMethodNameWithPresentTense = key => {
   return `${key}s`
 }
 
-export const createMethodList = ({ list, resultsIn }) =>
-  list
-    .reduce(
-      (initial, key) => [
-        ...initial,
-        key,
-        createMethodNameWithPresentTense(key),
-      ],
-      [],
-    )
-    .reduce(
-      (initial, key) => ({
-        ...initial,
-        [key]: () => ({ in: resultsIn(key) }),
-      }),
-      {},
-    )
-
-export const createResultMethods = ({ list, methods }) => valueFrom =>
+const createMethodNamesWithValues = ({ list, method }) =>
   list.reduce(
     (initial, key) => ({
       ...initial,
-      [key]: methods[key](valueFrom),
-      [createMethodNameWithPresentTense(key)]: methods[key](valueFrom),
+      [key]: method(key),
+      [createMethodNameWithPresentTense(key)]: method(key),
     }),
     {},
   )
 
+export const createMethodList = ({ list, resultsIn }) =>
+  createMethodNamesWithValues({
+    list,
+    method: key => () => ({ in: resultsIn(key) }),
+  })
+
+export const createResultMethods = ({ list, methods }) => valueFrom =>
+  createMethodNamesWithValues({
+    list,
+    method: key => methods[key](valueFrom),
+  })
+
 export const createMethodPairs = methods => valueFrom => () =>
-  Object.keys(methods).reduce(
-    (initial, key) => ({
-      ...initial,
-      [key]: methods[key],
-      [createMethodNameWithPresentTense(key)]: methods[key],
-    }),
-    {},
-  )[valueFrom]
+  createMethodNamesWithValues({
+    list: Object.keys(methods),
+    method: key => methods[key],
+  })[valueFrom]
