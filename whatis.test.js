@@ -55,6 +55,8 @@ describe('Whatis', () => {
       'days',
       'week',
       'weeks',
+      'fortnight',
+      'fortnights',
       'month',
       'months',
       'year',
