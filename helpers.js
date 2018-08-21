@@ -1,13 +1,13 @@
 const consonants = 'bcdfghjklmnpqrstvxzwy'
 const vowels = 'aeiouyw'
 
-const last = str => str[str.length - 1]
+export const last = str => str[str.length - 1]
 
-const secondLast = str => str[str.length - 2]
+export const secondLast = str => str[str.length - 2]
 
-const endsIn = (str, endChar) => last(str) === endChar
+export const endsIn = (str, endChar) => last(str) === endChar
 
-const createMethodNameWithPresentTense = key => {
+export const createMethodNameWithPresentTense = key => {
   const secondLastLetter = secondLast(key)
 
   if (
@@ -20,7 +20,8 @@ const createMethodNameWithPresentTense = key => {
 
   return `${key}s`
 }
-const createUniqueNames = ({ key, method }) =>
+
+export const createUniqueNames = ({ key, method }) =>
   key === 'millennium' ? { millennia: method(key) } : null
 
 const createMethodNamesWithValues = ({ list, method }) =>
